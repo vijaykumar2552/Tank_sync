@@ -1,0 +1,20 @@
+{
+  "_comment": "SAMPLE PAYLOAD FOR LOCAL TESTING ONLY. The outer envelope shape (end_device_ids, uplink_message, received_at) is the real, documented The Things Stack v3 webhook format. The contents of decoded_payload below are a GUESS at reasonable field names for a water-tank sensor -- replace this whole decoded_payload object with your actual device's real uplink once you have one, and update PAYLOAD_FIELD_ALIASES in src/ttsDecoder.ts if your real field names differ.",
+  "end_device_ids": {
+    "device_id": "eui-tank-sensor-01",
+    "application_ids": { "application_id": "tanksync-app" },
+    "dev_eui": "0004A30B001C0530"
+  },
+  "received_at": "2026-09-17T08:15:30.000Z",
+  "uplink_message": {
+    "f_port": 1,
+    "f_cnt": 42,
+    "decoded_payload": {
+      "waterLevelPercent": 68,
+      "temperatureC": 27.4,
+      "ph": 7.2,
+      "pumpStatus": "OFF"
+    },
+    "received_at": "2026-09-17T08:15:30.000Z"
+  }
+}

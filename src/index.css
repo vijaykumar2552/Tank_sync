@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FAFAF8;
+    color: #111827;
+    @apply dark:bg-neutral-950 dark:text-neutral-100;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-neutral-900 rounded-2xl dark:border-neutral-800 p-6 transition-shadow duration-200;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 1px 3px rgba(15,23,42,0.06);
+  }
+  .dark .card { box-shadow: none; }
+  .card-hover {
+    @apply card;
+  }
+  .card-hover:hover {
+    box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+  }
+  .card-glass {
+    @apply bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl rounded-2xl border border-neutral-200/60 dark:border-neutral-800 p-6;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 shadow-sm hover:shadow-md active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 active:scale-[0.98];
+  }
+  .btn-danger {
+    @apply btn bg-error-500 text-white hover:bg-error-600 active:scale-[0.98];
+  }
+  .btn-success {
+    @apply btn bg-success-500 text-white hover:bg-success-600 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800;
+  }
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none transition-all;
+    border: 1px solid #D1D5DB;
+  }
+  .input:focus {
+    border-color: #0088FF;
+    box-shadow: 0 0 0 3px rgba(0,136,255,0.15);
+  }
+  .label {
+    @apply block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-success {
+    @apply badge bg-success-50 dark:bg-success-500/10 text-success-700 dark:text-success-400;
+  }
+  .badge-warning {
+    @apply badge bg-warning-50 dark:bg-warning-500/10 text-warning-700 dark:text-warning-400;
+  }
+  .badge-error {
+    @apply badge bg-error-50 dark:bg-error-500/10 text-error-700 dark:text-error-400;
+  }
+  .badge-info {
+    @apply badge bg-primary-50 dark:bg-primary-500/10 text-primary-700 dark:text-primary-400;
+  }
+  .badge-neutral {
+    @apply badge bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400;
+  }
+  .section-title {
+    @apply text-lg font-bold text-neutral-900 dark:text-neutral-100;
+  }
+  .section-subtitle {
+    @apply text-sm text-neutral-500 dark:text-neutral-400;
+  }
+}
+
+.water-fill {
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.water-wave {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.08) 0px,
+    rgba(255, 255, 255, 0.08) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-neutral-300 dark:bg-neutral-700 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-neutral-400 dark:bg-neutral-600; }
+
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500/40 ring-offset-2 dark:ring-offset-neutral-900;
+}
+
+.dark .recharts-cartesian-grid line { stroke-opacity: 0.1; }
+.dark .recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  border-radius: 12px !important;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 0.05) 50%, transparent 100%);
+  background-size: 200% 100%;
+  @apply animate-shimmer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .water-wave,
+  .animate-shimmer,
+  .skeleton-shimmer,
+  .animate-pulse-slow {
+    animation: none !important;
+  }
+  .water-fill {
+    transition-duration: 0.01ms !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

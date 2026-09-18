@@ -1,0 +1,39 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "tanks": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+
+    "history": {
+      ".read": "auth != null",
+      "$entryId": {
+        ".write": "auth != null && !data.exists()"
+      }
+    },
+
+    "notifications": {
+      ".read": "auth != null",
+      "$notifId": {
+        ".write": "auth != null"
+      }
+    },
+
+    "auditLogs": {
+      ".read": "auth != null",
+      "$entryId": {
+        ".write": "auth != null && !data.exists()"
+      }
+    },
+
+    "pumpLogs": {
+      ".read": "auth != null",
+      "$entryId": {
+        ".write": "auth != null && !data.exists()"
+      }
+    }
+  }
+}
